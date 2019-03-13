@@ -101,6 +101,17 @@ public class Game {
 		if(playerMove.isValid()) {
 			// Move the piece to the new coordinates
 			board.movePiece(oldX, oldY, newX, newY);
+			
+			//Mylo's Move Implementation
+			Checkers.Move botMove = new Checkers(null).getBestMove(board.getBoard());
+			
+			if(botMove.removeFlag)
+			{
+				board.removePiece(board.getBoard()[botMove.removeColumn/2][botMove.removeRow]);
+			}
+			
+			board.movePiece(botMove.startColumn, botMove.startRow, botMove.endColumn, botMove.endRow);
+			
 			return true;
 		}
 		
