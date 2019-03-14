@@ -58,6 +58,30 @@ public class Board {
 		
 		nodes[oldX/2][oldY] = null;
 		nodes[newX/2][newY] = piece;
+		//jumping piece 
+		// if it moves two sections it jumped
+		if (oldX - newX == 2 || oldX - newX == -2) {
+			int JumpX = 0,JumpY = 0;
+			if(oldX<newX) {
+				 JumpX=oldX+1;
+			}
+			if(oldX>newX) {
+				 JumpX=oldX-1;
+			}
+			if(oldY<newY) {
+				 JumpY=oldY+1;
+			}
+			if(oldY>newY) {
+				 JumpY=oldY-1;
+			}
+            // The move is a jump.  Remove the jumped piece from the board.
+        
+        // System.out.println("Should jump here ");
+         BoardPiece p=nodes[JumpX/2][JumpY];
+         //System.out.println("Check"+ JumpX+ JumpY);
+        // System.out.println("Check newX and new Y"+ newX+newY+oldX+oldY);
+         renderer.removePiece(p);
+      }
 	}
 	
 	public BoardPiece[][] getBoard()
