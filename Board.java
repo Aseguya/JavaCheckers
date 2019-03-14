@@ -60,6 +60,11 @@ public class Board {
 		nodes[newX/2][newY] = piece;
 	}
 	
+	public BoardPiece[][] getBoard()
+	{
+		return nodes;
+	}
+	
 	// Simplified access methods --------------------------------------------------
 	public boolean isBlack(int x, int y) {
 		return inBounds(x, y) && nodes[x/2][y] != null && !nodes[x/2][y].isWhite;
